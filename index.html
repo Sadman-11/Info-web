@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<style>
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		label {
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		input[type="number"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px gray;
+			margin-bottom: 20px;
+		}
+		input[type="submit"] {
+			background-color: blue;
+			color: white;
+			padding: 10px 20px;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: darkblue;
+		}
+	</style>
+</head>
+<body>
+	<h1>Welcome to the Site</h1>
+	<form>
+		<label for="number-input">Enter a number:</label>
+		<input type="number" id="number-input" required>
+		<input type="submit" value="Submit">
+	</form>
+	<script>
+    console.log("Started")
+		const form = document.querySelector('form');
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const number = document.querySelector('#number-input').value;
+			const data = { url: "url" };
+			fetch('http://cors-anywhere.sadmananik1.repl.co/dl', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+				})
+				.then(response => response.json())
+				.then(data => console.log(data))
+				.catch(error => console.error(error));
+		});
+	</script>
+</body>
+</html>
